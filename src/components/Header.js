@@ -3,8 +3,15 @@ import {useParams} from "react-router-dom"
 import {useEffect, useState} from "react"
 import styles from "../css/Header.module.css"
 
+
+
+
+const playList = []
+
+
 function Header(){
     const today = new Date();
+
 
     const [month, setMonth] = useState(0);
     const [date, setDate] = useState(0);
@@ -13,6 +20,7 @@ function Header(){
     const [minutes, setMinutes] = useState(0);
 
     const [seconds, setseconds] = useState(0)
+
 
 
     useEffect(() => {
@@ -28,6 +36,8 @@ function Header(){
 
     setInterval(function(){
         setseconds(today.getSeconds())
+        // const audioState = document.querySelector("audio")
+        // console.log(audioState)
     }, 2000)
 
     return (
@@ -41,16 +51,21 @@ function Header(){
                 <div className={styles.left_icon}>계속</div>
                 <div className={styles.left_icon}>업데이트</div>
                 <div className={styles.left_icon}>예정</div>
+                
             </div>
             <div className={styles.header_right}>
                 <div>Icon 1</div>
                 <div>Icon 2</div>
                 <div>Icon 3</div>
-                <div>Icon 4</div>
-                <div>Icon 5</div>
+                <div>
+                   {localStorage.getItem("song_info")}
+                </div>
+                <div><img src="https://wakatime.com/badge/user/ed8163e8-aa6a-4cb4-827e-780d53c1f10e.svg" className={styles.header_right_img}></img></div>
                 <div>{`${month}월 ${date}일 (${day}) ${hours}:${minutes}`}</div>
             </div>
-       </div>
+
+            
+        </div>
     )
 }
 
