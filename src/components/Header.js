@@ -21,6 +21,26 @@ function Header(){
 
     const [seconds, setseconds] = useState(0)
 
+    const onClick = () => {
+
+        if(localStorage.getItem("music_bar") == null){
+            console.log(null)
+            localStorage.setItem("music_bar", "true")
+        }else{
+            if(localStorage.getItem("music_bar") === "true"){
+                localStorage.setItem("music_bar", "false")
+            }else{
+                localStorage.setItem("music_bar", "true")
+            }
+        }
+
+        
+
+        // localStorage.setItem("music_bar", "true")
+
+        
+    }
+
 
 
     useEffect(() => {
@@ -57,7 +77,7 @@ function Header(){
                 <div>Icon 1</div>
                 <div>Icon 2</div>
                 <div>Icon 3</div>
-                <div>
+                <div onClick={onClick}>
                    {localStorage.getItem("song_info")}
                 </div>
                 <div><img src="https://wakatime.com/badge/user/ed8163e8-aa6a-4cb4-827e-780d53c1f10e.svg" className={styles.header_right_img}></img></div>
